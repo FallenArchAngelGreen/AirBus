@@ -1,0 +1,16 @@
+[
+    {
+        "MSN": "12345",
+        "FlightNo":"A320",
+        "HarnessLength":"",
+        "GrossWeight":"",
+        "AtomPressure":"",
+        "RoomTemp":"",
+        "Airport":"",
+        "FuelCapL":"",
+        "FuelCapR":"",
+        "FuelQuantL":"",
+        "FuelQuantR":"",
+        "MaxAlti":""
+    }
+]
