@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html ng-app = "myApp">
+<head>
+<meta charset = "UTF-8">
+<title>AirBus Search</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myController', function($scope, $http) {
+  $http.get("https://gist.githubusercontent.com/FallenArchAngelGreen/28166ef1f63f9244b915ebfa3bd255f5/raw/76c075b513f4517d8dfe1e688c7fb9bbe0c21dc7/pack.json").then(function (response) {
+      $scope.users = response.data;
+  });
+});
+</script>
+</head>
+<body ng-controller = "myController">
+        <div class="topnav">
+                <a href="index.html">Home</a>
+                <a href="flight.html">A320</a>
+                <a href="flight1.html">A330</a>
+                <a href="flight2.html">A350</a>
+                <a href="search.html" target="_self">Search</a>
+        </div>
+        <input type="text" ng-model = "search.FlightNo" placeholder = "Search an Flight">
+	<table cellpadding = "2" cellspacing = "2" border = "1">
+		<tr>
+            <th>MSN</th>
+            <th>Flight No</th>
+            <th>Source</th>
+            <th>Destination</th>
+			<th>FuelCapL</th>
+			<th>FuelCapR</th>
+			<th>FuelQuantL</th>
+			<th>FuelQuantR</th>
+		</tr>
+		
+		<tr ng-repeat = "item in users | filter:search">
+            <td>{{item.MSN}}</td>
+            <td>{{item.FlightNo}}</td>
+			<td>{{item.Airport}}</td>
+			<td>{{item.Dest}}</td>
+			<td>{{item.FuelCapL}}</td>
+            <td>{{item.FuelCapR}}</td>
+			<td>{{item.FuelQuantL}}</td>
+			<td>{{item.FuelQuantR}}</td>
+		</tr>
+	</table>
+
+</body>
+<style>
+input{
+	width: 100%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+	}
+table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+table tr:nth-child(even){background-color: #f2f2f2;}
+
+table tr:hover {background-color: #ddd;}
+
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+  iframe{
+    background-color: white;
+    width:100%;
+    height:50px;
+  }
+  *{
+    opacity:1;
+  }
+body{
+  background-color:grey;
+  opacity:0.5;
+}
+.topnav {
+  background-color: black;
+  overflow: hidden;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.topnav a:hover {
+  background-color: orangered;
+  color: black;
+}
+
+.topnav a:active {
+  background-color: orangered;
+  color: white;
+}
+input{
+	width: 100%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: black;
+    color: white;
+	}
+table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #ddd;
+}
+
+table tr:nth-child(even){background-color: #f2f2f2;}
+
+table tr:hover {background-color: #ddd;}
+
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color:black;
+    color: white;
+}
+</style>
+</html>
